@@ -33,18 +33,4 @@ export default class MyDocument extends Document {
       sheet.seal();
     }
   }
-  // public render() {
-  //   return (
-  //     <Html lang="is">
-  //       <Head>
-  //         <meta charSet="utf-8" />
-  //         <meta name="disabled-adaptations" content="watch" />
-  //       </Head>
-  //       <body>
-  //         <Main />
-  //         <NextScript />
-  //       </body>
-  //     </Html>
-  //   );
-  // }
 }

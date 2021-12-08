@@ -1,49 +1,34 @@
 import type { NextPage } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Link from "next/link";
+
 import Head from "next/head";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useQuery } from "react-query";
-// import { ReactQueryDevtools } from "react-query/devtools";
 
-import { useDebouncedValue } from "rooks";
-
-import { Box, Contain, Text, Stack, Heading, Flex } from "@components/system";
+import {
+  Box,
+  Card,
+  Contain,
+  Text,
+  Stack,
+  Heading,
+  Flex,
+} from "@components/system";
 
 import { theme } from "@theme/theme";
 import { BaseLayout } from "@components/BaseLayout";
 import { SearchBox } from "@components/atoms";
 
-const Home: NextPage = () => {
-  const [query, setQuery] = useState("");
+type Post = {
+  id: number;
+  title: string;
+  body: string;
+  url: string;
+  github: string;
+};
 
-  const [debouncedQuery, immediatelyUpdateDebouncedValue] = useDebouncedValue(
-    query,
-    500
-  );
-
-  // const fetchGifs = async () =>
-  //   await (
-  //     await fetch(
-  //       `https://api.giphy.com/v1/gifs/search?api_key=${process.env.API_KEY}&q=${debouncedQuery}`
-  //     )
-  //   ).json();
-
-  const { data, status } = useQuery(["todos", debouncedQuery], async () => {
-    const response = await fetch(
-      `https://api.giphy.com/v1/gifs/search?api_key=${process.env.NEXT_PUBLIC_GIPHY_API_KEY}&q=${debouncedQuery}`
-    );
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  });
-
-  // useEffect(() => {
-  //   console.log(debouncedQuery);
-  //   console.log(data);
-  //   console.log(status);
-  // }, [debouncedQuery, status, data]);
-
+const Home: NextPage = ({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <BaseLayout>
       <Head>
@@ -51,39 +36,57 @@ const Home: NextPage = () => {
         <meta name="description" content="Search for your favorite gifs!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Stack direction="column" gap={[4, null, 6]} mt={[8, null, 10]}>
-        <Heading as="h1" fontSize={[4, 6]} color="primary300">
-          Finndu uppáhalds gifið þitt!
-        </Heading>
-        <Box bg="grey400" mt={4} p={2} borderRadius={10}>
-          <SearchBox
-            placeholder="Leitaðu að gifi"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          ></SearchBox>
-        </Box>
-        <Box mb={[8, null, 10]}>
-          <Flex
-            flexDirection="row"
-            flexWrap="wrap"
-            justifyContent="space-around"
+      <Flex flexDirection="row" mt={[8, null, 10]} flexWrap="wrap">
+        {posts.map((p: Post) => (
+          <Card
+            key={p.id}
+            boxShadow="xl"
+            m={[4, null, 6]}
+            maxWidth="18rem"
+            width="100%"
           >
-            {data?.data.map((d: any) => (
-              <Box maxWidth={["100%", "50%", "50%", "33%"]} alignSelf="center">
-                <Image
-                  key={d.id}
-                  src={d.images?.downsized?.url}
-                  height={d.images.downsized.height}
-                  width={d.images.downsized.width}
-                  objectFit="cover"
-                />
-              </Box>
-            ))}
-          </Flex>
-        </Box>
-      </Stack>
+            <Stack direction="column" gap={[2, null, 4]}>
+              <Heading as="h4">{p.title}</Heading>
+              <Text>{p.body}</Text>
+              <Flex justifyContent="space-around">
+                <Link href={p.url} passHref>
+                  <a href="/#">
+                    <Text>Verkefni</Text>
+                  </a>
+                </Link>
+                <Link href={p.github} passHref>
+                  <a href="/#">
+                    <Text fontWeight="semibold">Github</Text>
+                  </a>
+                </Link>
+              </Flex>
+            </Stack>
+          </Card>
+        ))}
+      </Flex>
     </BaseLayout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const res = await fetch("https://nokkvi96.com/wp-json/wp/v2/portfolios");
+  const data = await res.json();
+
+  const posts = await Promise.all(
+    data.map((json: any) => ({
+      id: json.id,
+      title: json.acf.title,
+      body: json.acf.body,
+      url: json.acf.website,
+      github: json.acf.github,
+    }))
+  );
+
+  return {
+    props: {
+      posts,
+    },
+  };
 };
 
 export default Home;

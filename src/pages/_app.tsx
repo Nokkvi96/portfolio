@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo titleTemplate={`%s | Next React Typescript Boilerplate`} />
+      <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
         <Component {...pageProps} />
       </ThemeProvider>
     </>

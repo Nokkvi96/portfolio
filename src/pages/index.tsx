@@ -4,19 +4,9 @@ import Link from "next/link";
 
 import Head from "next/head";
 
-import {
-  Box,
-  Card,
-  Contain,
-  Text,
-  Stack,
-  Heading,
-  Flex,
-} from "@components/system";
+import { Card, Text, Stack, Heading, Flex } from "@components/system";
 
-import { theme } from "@theme/theme";
 import { BaseLayout } from "@components/BaseLayout";
-import { SearchBox } from "@components/atoms";
 
 type Post = {
   id: number;
@@ -68,7 +58,7 @@ const Home: NextPage = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://nokkvi96.com/wp-json/wp/v2/portfolios");
   const data = await res.json();
 

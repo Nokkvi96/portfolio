@@ -1,10 +1,5 @@
 import styled from "styled-components";
-import {
-  system,
-  ResponsiveValue,
-  TLengthStyledSystem,
-  BorderProps,
-} from "styled-system";
+import { system, ResponsiveValue, TLengthStyledSystem } from "styled-system";
 import { Flex } from "./Flex";
 import { BoxProps } from "./Box";
 

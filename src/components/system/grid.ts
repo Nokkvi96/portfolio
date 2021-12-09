@@ -1,4 +1,4 @@
-import { theme } from "src/theme";
+// import { theme } from "src/theme";
 
 export interface ThemeGridContainer {
   maxWidth: number;
@@ -10,7 +10,7 @@ export interface ThemeGrid {
   container: ThemeGridContainer;
 }
 
-const { space } = theme;
+// const { space } = theme;
 
 export const defaultGrid = {
   gutter: [4, null, 8],

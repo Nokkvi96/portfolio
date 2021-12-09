@@ -1,4 +1,4 @@
-import { darken, modularScale } from "polished";
+import { modularScale } from "polished";
 
 import { ThemeGrid } from "@components/system";
 import { DefaultTheme } from "styled-components";

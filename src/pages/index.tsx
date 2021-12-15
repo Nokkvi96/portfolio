@@ -1,12 +1,13 @@
 import type { NextPage } from "next";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-
 import Head from "next/head";
+
+import { NextSeo } from "next-seo";
 
 import { Card, Text, Stack, Heading, Flex } from "@components/system";
 
-import { BaseLayout } from "@components/BaseLayout";
+import { BaseLayout } from "@components/templates/BaseLayout";
 
 type Post = {
   id: number;
@@ -21,13 +22,8 @@ const Home: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <BaseLayout>
-      <Head>
-        <title>Giphy Leit</title>
-        <meta name="description" content="Search for your favorite gifs!" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Flex
-        gap={[4, null, 8]}
+        gap={[4, null, 6]}
         flexDirection="row"
         mt={[8, null, 10]}
         flexWrap="wrap"
@@ -35,10 +31,12 @@ const Home: NextPage = ({
         {posts.map((p: Post) => (
           <Card
             key={p.id}
-            boxShadow="m"
             p={[4, null, 4]}
+            boxShadow="m"
+            bg="white"
             maxWidth="18rem"
             width="100%"
+            borderRadius={8}
           >
             <Stack direction="column" gap={[4, null, 4]} height="100%">
               <Heading as="h4" fontSize={3}>

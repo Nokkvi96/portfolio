@@ -26,19 +26,26 @@ const Home: NextPage = ({
         <meta name="description" content="Search for your favorite gifs!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex flexDirection="row" mt={[8, null, 10]} flexWrap="wrap">
+      <Flex
+        gap={[4, null, 8]}
+        flexDirection="row"
+        mt={[8, null, 10]}
+        flexWrap="wrap"
+      >
         {posts.map((p: Post) => (
           <Card
             key={p.id}
-            boxShadow="xl"
-            m={[4, null, 6]}
+            boxShadow="m"
+            p={[4, null, 4]}
             maxWidth="18rem"
             width="100%"
           >
-            <Stack direction="column" gap={[2, null, 4]}>
-              <Heading as="h4">{p.title}</Heading>
+            <Stack direction="column" gap={[4, null, 4]} height="100%">
+              <Heading as="h4" fontSize={3}>
+                {p.title}
+              </Heading>
               <Text>{p.body}</Text>
-              <Flex justifyContent="space-around">
+              <Flex justifyContent="space-around" justifySelf="end">
                 <Link href={p.url} passHref>
                   <a href="/#">
                     <Text>Verkefni</Text>

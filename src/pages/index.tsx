@@ -1,11 +1,8 @@
 import type { NextPage } from "next";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
-import Head from "next/head";
 
-import { NextSeo } from "next-seo";
-
-import { Card, Text, Stack, Heading, Flex } from "@components/system";
+import { Box, Card, Text, Stack, Heading, Flex } from "@components/system";
 
 import { BaseLayout } from "@components/templates/BaseLayout";
 
@@ -15,11 +12,13 @@ type Post = {
   body: string;
   url: string;
   github: string;
+  image?: any;
 };
 
 const Home: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(posts[0].image.sizes.medium);
   return (
     <BaseLayout>
       <Flex
@@ -31,19 +30,22 @@ const Home: NextPage = ({
         {posts.map((p: Post) => (
           <Card
             key={p.id}
-            p={[4, null, 4]}
             boxShadow="m"
             bg="white"
             maxWidth="18rem"
             width="100%"
             borderRadius={8}
+            overflow="hidden"
           >
-            <Stack direction="column" gap={[4, null, 4]} height="100%">
+            {p.image !== undefined && (
+              <img alt="test" src={p.image.sizes.medium} />
+            )}
+            <Stack direction="column" gap={4} p={4}>
               <Heading as="h4" fontSize={3}>
                 {p.title}
               </Heading>
               <Text>{p.body}</Text>
-              <Flex justifyContent="space-around" justifySelf="end">
+              <Flex justifyContent="space-around" mt="auto">
                 <Link href={p.url} passHref>
                   <a href="/#">
                     <Text>Verkefni</Text>
@@ -74,6 +76,7 @@ export const getStaticProps: GetStaticProps = async () => {
       body: json.acf.body,
       url: json.acf.website,
       github: json.acf.github,
+      image: json.acf.image || null,
     }))
   );
 

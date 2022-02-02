@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 
-import { Box, Card, Text, Stack, Heading, Flex } from "@components/system";
+import { Card, Text, Stack, Heading, Flex } from "@components/system";
 
 import { BaseLayout } from "@components/templates/BaseLayout";
 

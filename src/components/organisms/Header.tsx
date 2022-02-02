@@ -1,4 +1,4 @@
-import { Box, Contain, Flex } from "@components/system";
+import { Flex } from "@components/system";
 
 export const Header: React.FC = ({ children }) => {
   return (

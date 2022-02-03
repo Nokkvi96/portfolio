@@ -19,7 +19,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-
     "baseUrl": ".",
     "paths": {
       "@components/*": ["src/components/*"],

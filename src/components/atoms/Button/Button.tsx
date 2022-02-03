@@ -60,6 +60,7 @@ const ButtonLabel = styled.span<ButtonProps>`
 
 // this is a class component because Buttons often need a ref, and function components require React.forwardRef to forward refs
 export class Button extends Component<ButtonProps> {
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   render() {
     const {
       as = "button",
@@ -68,7 +69,6 @@ export class Button extends Component<ButtonProps> {
       justify = "center",
       size = "medium",
       type = "button",
-      ripple = true,
       loading,
       disabled,
       ...props

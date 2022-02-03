@@ -7,6 +7,7 @@ const Svg = styled(Icon)`
   height: ${(props) => props.height || "25px"};
 `;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <Svg
     viewBox="0 0 1792 1792"

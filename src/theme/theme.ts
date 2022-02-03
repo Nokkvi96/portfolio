@@ -6,7 +6,7 @@ import { DefaultTheme } from "styled-components";
 import { colors } from "./colors";
 import { grid } from "./grid";
 
-let fontSizes = [];
+const fontSizes = [];
 for (let i = 0; i < 15; i++) {
   fontSizes[i] = modularScale(i - 2, "1rem", "majorThird");
 }

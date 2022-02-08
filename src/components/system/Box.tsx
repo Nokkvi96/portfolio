@@ -22,6 +22,8 @@ import {
   PositionProps,
   space,
   SpaceProps,
+  ShadowProps,
+  shadow,
   style,
   textStyle,
   TextStyleProps,
@@ -48,6 +50,7 @@ export type BoxProps = BackgroundProps &
   OpacityProps &
   PositionProps &
   SpaceProps &
+  ShadowProps &
   TextStyleProps &
   TypographyProps & {
     textDecoration?:
@@ -84,6 +87,7 @@ const boxStyles = compose(
   textDecoration,
   textTransform,
   typography,
+  shadow,
   variant({
     prop: "variant",
     scale: "buttons",

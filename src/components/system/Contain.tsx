@@ -1,9 +1,9 @@
 import { ThemeContext } from "styled-components";
-import { DisplayProps, HeightProps } from "styled-system";
+import { DisplayProps, HeightProps, LayoutProps } from "styled-system";
 import { Box } from "./Box";
 import { useContext } from "react";
 
-type ContainProps = DisplayProps & HeightProps;
+type ContainProps = DisplayProps & HeightProps & LayoutProps;
 
 export const Contain: React.FC<ContainProps> = (props) => {
   const themeContext = useContext(ThemeContext);

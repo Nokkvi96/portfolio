@@ -1,6 +1,7 @@
 /* eslint-disable import/no-duplicates */
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "@utils/DefaultSeo";
+import { BaseLayout } from "@components/templates/BaseLayout";
 
 import { ThemeProvider } from "styled-components";
 import { theme } from "@theme/theme";
@@ -11,9 +12,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <DefaultSeo />
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <>
+          <GlobalStyle />
+          <BaseLayout>
+            <Component {...pageProps} />
+          </BaseLayout>
+        </>
       </ThemeProvider>
     </>
   );

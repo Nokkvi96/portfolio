@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html,
   body,
   h1,
   h2,
@@ -81,11 +82,11 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: ${theme.fonts.body};
+    background-color: ${theme.colors.bg};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.2;
     min-width: 320px;
-    min-height: 100vh;
     text-rendering: optimizeSpeed;
   }
   

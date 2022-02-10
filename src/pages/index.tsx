@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Link from "next/link";
 
-import { Card, Text, Stack, Heading, Flex } from "@components/system";
+import { Card, Text, Stack, Heading, Flex, Grid } from "@components/system";
 
 type Post = {
   id: number;
@@ -18,13 +18,19 @@ const Home: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   console.log(posts[0].image.sizes.medium);
   return (
-    <Flex gap={[4, null, 6]} flexDirection="row" flexWrap="wrap">
+    <Grid
+      gridGap={[4, null, 6]}
+      gridTemplateColumns={[
+        "repeat(1, 1fr)",
+        "repeat(2, 1fr)",
+        "repeat(3, 1fr)",
+      ]}
+    >
       {posts.map((p: Post) => (
         <Card
           key={p.id}
           boxShadow="m"
           bg="white"
-          maxWidth={["18rem"]}
           width="100%"
           borderRadius={8}
           overflow="hidden"
@@ -36,8 +42,10 @@ const Home: NextPage = ({
             <Heading as="h4" fontSize={3}>
               {p.title}
             </Heading>
-            <Text>{p.body}</Text>
-            <Flex justifyContent="space-around" mt="auto">
+            <Text flex={"1 0 auto"} display="block">
+              {p.body}
+            </Text>
+            <Flex justifyContent="space-around">
               <Link href={p.url} passHref>
                 <a href="/#">
                   <Text>Verkefni</Text>
@@ -52,7 +60,7 @@ const Home: NextPage = ({
           </Stack>
         </Card>
       ))}
-    </Flex>
+    </Grid>
   );
 };
 

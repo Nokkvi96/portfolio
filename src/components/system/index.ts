@@ -7,4 +7,4 @@ export * from "./Space";
 export * from "./Text";
 export * from "./Stack";
 export * from "./Icon";
-export * from "./grid";
+export * from "./Grid";

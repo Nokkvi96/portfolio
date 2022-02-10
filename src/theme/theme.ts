@@ -1,10 +1,9 @@
 import { modularScale } from "polished";
 
-import { ThemeGrid } from "@components/system";
 import { DefaultTheme } from "styled-components";
 
 import { colors } from "./colors";
-import { grid } from "./grid";
+import { grid, ThemeGrid } from "./grid";
 
 const fontSizes = [];
 for (let i = 0; i < 15; i++) {

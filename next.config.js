@@ -12,6 +12,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: [process.env.WORDPRESS_URL],
+    domains: ["nokkvi96.com"],
   },
 };

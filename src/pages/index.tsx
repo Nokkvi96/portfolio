@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Card, Text, Stack, Heading, Flex, Grid } from "@components/system";
@@ -16,7 +17,6 @@ type Post = {
 const Home: NextPage = ({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(posts[0].image.sizes.medium);
   return (
     <Grid
       gridGap={[4, null, 6]}
@@ -36,7 +36,12 @@ const Home: NextPage = ({
           overflow="hidden"
         >
           {p.image !== undefined && (
-            <img alt="test" src={p.image.sizes.medium} />
+            <Image
+              alt="test"
+              src={p.image.sizes.medium_large}
+              height={posts[0].image.sizes["medium_large-height"]}
+              width={posts[0].image.sizes["medium_large-width"]}
+            />
           )}
           <Stack direction="column" gap={4} p={4}>
             <Heading as="h4" fontSize={3}>

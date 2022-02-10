@@ -1,11 +1,12 @@
-import { Box, Contain, Flex } from "@components/system";
+import { Box, Contain, Flex, Text } from "@components/system";
 
 export const Footer: React.FC = () => {
   return (
     <Box as="footer" bg="white">
       <Contain maxWidth={1440}>
-        <Flex flexDirection="column" width="100%">
-          <Box>Nökkvi Þórsson</Box>
+        <Flex flexDirection="row" width="100%">
+          <Text>Nökkvi Þórsson</Text>
+          <Text>Nökkvi Þórsson</Text>
         </Flex>
       </Contain>
     </Box>

@@ -1,5 +1,5 @@
 import { Box, Contain, Flex } from "@components/system";
-import { Header, Footer } from "@components/organisms";
+// import { Header, Footer } from "@components/organisms";
 
 export const BaseLayout: React.FC = ({ children }) => {
   return (

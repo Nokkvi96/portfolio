@@ -90,7 +90,7 @@ export interface CustomTheme {
 }
 
 export const theme: DefaultTheme = {
-  breakpoints: ["40rem", "52rem", "64rem", "80rem"],
+  breakpoints: ["40rem", "52rem", "64rem"],
   fontSizes,
   space,
   fonts,

@@ -1,19 +1,14 @@
-import { ThemeContext } from "styled-components";
+import styled from "styled-components";
 import { DisplayProps, HeightProps, LayoutProps } from "styled-system";
 import { Box } from "./Box";
-import { useContext } from "react";
+import { theme } from "src/theme";
 
 type ContainProps = DisplayProps & HeightProps & LayoutProps;
 
-export const Contain: React.FC<ContainProps> = (props) => {
-  const themeContext = useContext(ThemeContext);
+export const Contain = styled(Box)<ContainProps>``;
 
-  return (
-    <Box
-      mx="auto"
-      px={themeContext?.grid?.container?.padding}
-      maxWidth={themeContext?.grid?.container?.maxWidth}
-      {...props}
-    />
-  );
+Contain.defaultProps = {
+  mx: "auto",
+  px: theme?.grid?.container?.padding,
+  maxWidth: theme?.grid?.container?.maxWidth,
 };

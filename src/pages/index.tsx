@@ -48,7 +48,7 @@ const Home: NextPage = ({
             <Heading as="h4" fontSize={3}>
               {p.title}
             </Heading>
-            <Text flex={"1 0 auto"} display="block">
+            <Text lineHeight="1.6" flex={"1 0 auto"} display="block">
               {parse(p.body)}
             </Text>
             <Flex justifyContent="space-around">

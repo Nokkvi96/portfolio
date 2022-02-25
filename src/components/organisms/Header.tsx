@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
           width="100%"
           height="100%"
         >
-          <Text fontFamily="lora" fontWeight="400" fontSize={[3, null, 4]}>
+          <Text fontFamily="Lora" fontWeight="regular" fontSize={[3, null, 4]}>
             <Link href="/" passHref>
               <a href="#">Nökkvi</a>
             </Link>

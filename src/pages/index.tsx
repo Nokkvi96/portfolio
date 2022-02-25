@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import parse from "html-react-parser";
 
 import { Card, Text, Stack, Heading, Flex, Grid } from "@components/system";
 
@@ -35,7 +36,7 @@ const Home: NextPage = ({
           borderRadius={8}
           overflow="hidden"
         >
-          {p.image !== undefined && (
+          {p?.image !== undefined && (
             <Image
               alt="test"
               src={p.image.sizes.medium_large}
@@ -48,7 +49,7 @@ const Home: NextPage = ({
               {p.title}
             </Heading>
             <Text flex={"1 0 auto"} display="block">
-              {p.body}
+              {parse(p.body)}
             </Text>
             <Flex justifyContent="space-around">
               <Link href={p.url} passHref>
@@ -70,7 +71,7 @@ const Home: NextPage = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("https://nokkvi96.com/wp-json/wp/v2/portfolios");
+  const res = await fetch("https://nokkvi96.com/wp-json/wp/v2/portfolio");
   const data = await res.json();
 
   const posts = await Promise.all(
@@ -88,6 +89,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts,
     },
+    revalidate: 60,
   };
 };
 

@@ -4,7 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import parse from "html-react-parser";
 
-import { Card, Text, Stack, Heading, Flex, Grid } from "@components/system";
+import { Icon } from "@components/atoms";
+
+import {
+  Box,
+  Card,
+  Text,
+  Stack,
+  Heading,
+  Flex,
+  Grid,
+} from "@components/system";
 
 type Post = {
   id: number;
@@ -36,33 +46,48 @@ const Home: NextPage = ({
           borderRadius={8}
           overflow="hidden"
         >
-          {p?.image !== undefined && (
-            <Image
-              alt="test"
-              src={p.image.sizes.medium_large}
-              height={posts[0].image.sizes["medium_large-height"]}
-              width={posts[0].image.sizes["medium_large-width"]}
-            />
-          )}
-          <Stack direction="column" gap={4} p={4}>
-            <Heading as="h4" fontSize={3}>
-              {p.title}
-            </Heading>
-            <Text lineHeight="1.6" flex={"1 0 auto"} display="block">
-              {parse(p.body)}
-            </Text>
-            <Flex justifyContent="space-around">
-              <Link href={p.url} passHref>
-                <a href="/#">
-                  <Text>Verkefni</Text>
-                </a>
-              </Link>
-              <Link href={p.github} passHref>
-                <a href="/#">
-                  <Text fontWeight="semibold">Github</Text>
-                </a>
-              </Link>
-            </Flex>
+          <Stack height="100%" direction="column">
+            {p?.image !== undefined && (
+              <Box display="block">
+                <Image
+                  alt="test"
+                  src={p.image.sizes.medium_large}
+                  height={posts[0].image.sizes["medium_large-height"]}
+                  width={posts[0].image.sizes["medium_large-width"]}
+                  layout="responsive"
+                />
+              </Box>
+            )}
+            <Stack flex="1 0 auto" direction="column" gap={4} p={4}>
+              <Heading as="h4" fontSize={3}>
+                {p.title}
+              </Heading>
+              <Text lineHeight="1.6" display="block">
+                {parse(p.body)}
+              </Text>
+              <Flex justifyContent="space-around" mt="auto">
+                <Link href={p.url} passHref>
+                  <a href="/#">
+                    <Flex>
+                      <Icon icon="Web" />
+                      <Text fontWeight="semibold" ml={2}>
+                        Verkefni
+                      </Text>
+                    </Flex>
+                  </a>
+                </Link>
+                <Link href={p.github} passHref>
+                  <a href="/#">
+                    <Flex>
+                      <Icon icon="Github" />
+                      <Text fontWeight="semibold" ml={2}>
+                        Github
+                      </Text>
+                    </Flex>
+                  </a>
+                </Link>
+              </Flex>
+            </Stack>
           </Stack>
         </Card>
       ))}

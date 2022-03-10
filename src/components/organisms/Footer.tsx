@@ -1,8 +1,11 @@
 import Link from "next/link";
-
-import { Box, Contain, Flex, Text } from "@components/system";
+import { theme } from "@theme/theme";
+import { Box, Contain, Flex } from "@components/system";
+import { TextWithIcon } from "@components/atoms";
 
 export const Footer: React.FC = () => {
+  const { colors } = theme;
+
   return (
     <Box
       as="header"
@@ -20,21 +23,42 @@ export const Footer: React.FC = () => {
           width="100%"
           height="100%"
         >
-          <Text fontSize={2} fontWeight="500">
-            <Link href="https://www.linkedin.com/in/nokkvi96/" passHref>
-              <a href="#">Linkedin</a>
-            </Link>
-          </Text>
-          <Text fontSize={2} fontWeight="500">
-            <Link href="https://github.com/Nokkvi96" passHref>
-              <a href="#">Github</a>
-            </Link>
-          </Text>
-          <Text fontSize={2} fontWeight="500">
-            <Link href="mailto:nokkvi96@gmail.com" passHref>
-              <a href="#">nokkvi96@gmail.com</a>
-            </Link>
-          </Text>
+          <Link href="https://www.linkedin.com/in/nokkvi96/" passHref>
+            <a href="/#">
+              <TextWithIcon
+                fontSize={3}
+                fontWeight="semibold"
+                gap={3}
+                color={colors.primary900}
+                icon="Linkedin"
+                text="LinkedIn"
+              />
+            </a>
+          </Link>
+          <Link href="https://github.com/Nokkvi96" passHref>
+            <a href="#">
+              <TextWithIcon
+                fontSize={3}
+                fontWeight="semibold"
+                gap={3}
+                color={colors.primary900}
+                icon="Github"
+                text="GitHub"
+              />
+            </a>
+          </Link>
+          <Link href="mailto:nokkvi96@gmail.com" passHref>
+            <a href="#">
+              <TextWithIcon
+                fontSize={3}
+                fontWeight="semibold"
+                gap={2}
+                color={colors.primary900}
+                icon="Email"
+                text="nokkvi96@gmail.com"
+              />
+            </a>
+          </Link>
         </Flex>
       </Contain>
     </Box>

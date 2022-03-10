@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import parse from "html-react-parser";
 
-import { Icon } from "@components/atoms";
+import { TextWithIcon } from "@components/atoms";
 
 import {
   Box,
@@ -68,22 +68,24 @@ const Home: NextPage = ({
               <Flex justifyContent="space-around" mt="auto">
                 <Link href={p.url} passHref>
                   <a href="/#">
-                    <Flex>
-                      <Icon icon="Web" />
-                      <Text fontWeight="semibold" ml={2}>
-                        Verkefni
-                      </Text>
-                    </Flex>
+                    <TextWithIcon
+                      fontSize={2}
+                      fontWeight="semibold"
+                      gap={2}
+                      icon="Web"
+                      text="Verkefni"
+                    />
                   </a>
                 </Link>
                 <Link href={p.github} passHref>
                   <a href="/#">
-                    <Flex>
-                      <Icon icon="Github" />
-                      <Text fontWeight="semibold" ml={2}>
-                        Github
-                      </Text>
-                    </Flex>
+                    <TextWithIcon
+                      fontSize={2}
+                      fontWeight="semibold"
+                      gap={2}
+                      icon="Github"
+                      text="GitHub"
+                    />
                   </a>
                 </Link>
               </Flex>

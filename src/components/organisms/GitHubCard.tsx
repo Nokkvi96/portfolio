@@ -1,27 +1,45 @@
 import type { gitHubProfile } from "src/types";
 import Image from "next/image";
 import Link from "next/link";
+import styled, { keyframes } from "styled-components";
 
-import { Box, Card, Text, Stack } from "@components/system";
+import { Box, Card, CardProps, Text, Stack } from "@components/system";
 import { TextWithIcon, Icon } from "@components/atoms";
 
 export type GitHubCardProps = {
   profile: gitHubProfile;
 };
 
-export const GitHubCard: React.FC<GitHubCardProps> = ({
-  profile,
-  ...props
-}) => {
-  console.log(profile);
+const slideInLeft = keyframes`
+  0% {
+    opacity: 0;
+    transform: translatex(-500px);
+  }
+  25% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translatex(0px);
+  }
+`;
+
+export const StyledCard = styled(Card)<CardProps>`
+  left: -500px;
+  opacity: 0;
+  animation: ${slideInLeft} 0.5s forwards;
+  animation-delay: 0.2s;
+`;
+
+export const GitHubCard: React.FC<GitHubCardProps> = ({ profile }) => {
   return (
-    <Card
+    <StyledCard
       bg="green100"
       boxShadow="l"
       padding={[3, null, 4]}
       borderRadius="6%"
       maxWidth="20rem"
-      {...props}
     >
       <Stack gap={[3, null, 4]}>
         <Icon icon="Github" mb={[-3, null, -4]} />
@@ -75,6 +93,6 @@ export const GitHubCard: React.FC<GitHubCardProps> = ({
           </Stack>
         </Box>
       </Stack>
-    </Card>
+    </StyledCard>
   );
 };

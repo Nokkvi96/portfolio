@@ -1,3 +1,4 @@
+import { Favicon } from "@utils/FavIcon";
 import Document, {
   Html,
   Head,
@@ -39,7 +40,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="is">
-        <Head />
+        <Head>
+          <Favicon />
+        </Head>
         <body>
           <Main />
           <NextScript />

@@ -7,13 +7,7 @@ export const Footer: React.FC = () => {
   const { colors } = theme;
 
   return (
-    <Box
-      as="header"
-      boxShadow="l"
-      minHeight={["4", "5rem", "6rem"]}
-      bg="white"
-      zIndex={40}
-    >
+    <Box as="footer" minHeight={["4", "5rem", "6rem"]} zIndex={40}>
       <Contain maxWidth={1440} py={[14, 16, 18]} height="100%">
         <Flex
           flexDirection={["column", null, "row"]}

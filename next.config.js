@@ -12,6 +12,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ["nokkvi96.com"],
+    domains: ["nokkvi96.com", "avatars.githubusercontent.com"],
   },
 };

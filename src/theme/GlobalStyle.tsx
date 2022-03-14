@@ -80,6 +80,10 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+  &:focus {
+    outline: 3px solid ${theme.colors.secondary400};
+  }
+
   body {
     font-family: ${theme.fonts.body};
     background-color: ${theme.colors.bg};

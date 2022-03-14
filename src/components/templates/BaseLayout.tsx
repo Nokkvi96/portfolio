@@ -1,4 +1,4 @@
-import { Box, Contain, Flex } from "@components/system";
+import { Box, Flex } from "@components/system";
 import { Header, Footer } from "@components/organisms";
 
 export const BaseLayout: React.FC = ({ children }) => {
@@ -6,7 +6,7 @@ export const BaseLayout: React.FC = ({ children }) => {
     <Flex flexDirection="column" height="100vh">
       <Header />
       <Box as="main" flex={"1 0 auto"} display="block" my={[8, null, 10]}>
-        <Contain>{children}</Contain>
+        {children}
       </Box>
       <Footer />
     </Flex>

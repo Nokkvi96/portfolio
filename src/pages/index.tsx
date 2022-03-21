@@ -98,28 +98,32 @@ const Home: NextPage = ({
                     {parse(p.body)}
                   </Text>
                   <Flex justifyContent="space-around" mt="auto">
-                    <Link href={p.url} passHref>
-                      <a href="/#">
-                        <TextWithIcon
-                          fontSize={2}
-                          fontWeight="semibold"
-                          gap={2}
-                          icon="Web"
-                          text="Verkefni"
-                        />
-                      </a>
-                    </Link>
-                    <Link href={p.github} passHref>
-                      <a href="/#">
-                        <TextWithIcon
-                          fontSize={2}
-                          fontWeight="semibold"
-                          gap={2}
-                          icon="Github"
-                          text="GitHub"
-                        />
-                      </a>
-                    </Link>
+                    {p.url && (
+                      <Link href={p.url} passHref>
+                        <a href="/#">
+                          <TextWithIcon
+                            fontSize={2}
+                            fontWeight="semibold"
+                            gap={2}
+                            icon="Web"
+                            text="Verkefni"
+                          />
+                        </a>
+                      </Link>
+                    )}
+                    {p.github && (
+                      <Link href={p.github} passHref>
+                        <a href="/#">
+                          <TextWithIcon
+                            fontSize={2}
+                            fontWeight="semibold"
+                            gap={2}
+                            icon="Github"
+                            text="GitHub"
+                          />
+                        </a>
+                      </Link>
+                    )}
                   </Flex>
                 </Stack>
               </Stack>

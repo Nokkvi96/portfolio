@@ -52,8 +52,8 @@ const Home: NextPage = ({
             width={["100%", null, "50%"]}
           >
             <Heading color="white" fontSize={[5, 6, 7]}>
-              Áhugasamur og sveigjanlegur junior web developer sem er léttur í
-              skapi
+              Áhugasamur og sveigjanlegur nýútskrifaður tölvunarfræðingur sem er
+              léttur í skapi
             </Heading>
           </Flex>
         </Flex>
